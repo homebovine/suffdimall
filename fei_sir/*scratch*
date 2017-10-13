@@ -1,0 +1,17 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+ for(itr in 105:nsim){
+    print(itr)
+    std <- 1
+    std1 <- sqrt(1)
+    n <- 50
+    
+    beta0 <- rbind(fix, matrix(c(0.2, 0.3, 0.4, 0.3, 0.2, 0.4), nrow = 3, ncol = 2))
+    betaini <- as.vector(c( beta0[3:p, ] * 1.01))
+    
+    temp<- try(estimation(beta0, betaini, n, p, itr))
+    if(class(temp) != 'try-error')
+        res[itr, ] <- temp
+}
